@@ -1,0 +1,28 @@
+<h1>Edit an ICD Record</h1>
+
+<% if @icd && @icd.errors.any? %>
+  <h2>The following errors prevented the ICD record to be Saved</h2>
+  <ul>
+  <% @icd.errors.full_messages.each do |msg| %>
+    <li> <%= msg %> </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @icd, local: true)  do |f| %>
+  <p>
+    <%= f.label :code %> <br>
+    <%= f.text_field :code %>
+  </p>
+
+  <p>
+    <%= f.label :description %> <br>
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Cancel Edit & Return to Article Listing', icd_path %>

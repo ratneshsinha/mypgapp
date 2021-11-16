@@ -1,0 +1,9 @@
+<h1>Upload ICD File</h1>
+
+<%= form_with url: "/upload", method: :get do |form| %>
+  <%= form.label :file, "Choose File to Upload:" %>
+  <%= form.file_field :file %>
+  <%= form.submit "Upload" %>
+<% end %>
+
+<p><%= link_to 'Return to Article Listing', icds_path %></p>

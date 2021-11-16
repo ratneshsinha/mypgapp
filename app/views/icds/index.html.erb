@@ -1,0 +1,26 @@
+<h1>ICD Database</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Description</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @icds.each do |icd| %>
+    <tr>
+      <td><%= icd.code %></td>
+      <td><%= icd.description %></td>
+      <td><%= link_to 'Show', icd_path(icd) %> </td>
+      <td><%= link_to 'Edit', edit_icd_path(icd) %> </td>
+      <td><%= link_to "Delete", icd_path(icd), method: :delete, data: { confirm: "Are you sure?"} %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p> <%= link_to "Add New ICD Code", new_icd_path %> </p>
+<p> <%= link_to "Upload ICD Code from file", upload_path %> </p>
+<p> <%= link_to "Search for ICD Code", search_path %> </p>
