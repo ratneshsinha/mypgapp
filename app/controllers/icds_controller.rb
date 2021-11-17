@@ -52,16 +52,38 @@ class IcdsController < ApplicationController
       end
     end
 
-    fields = [
-      { name: 'code', position: 0..7 },
-      { name: 'description', position: 9..-1 }
-    ]   
-    FixedWidthFileParser.parse(full_filename_with_path.to_s, fields, force_utf8_encoding: false) do |row| 
-      puts "ICD Code: \"#{row[:code]}\" & Description: \"#{row[:description]}\""
-      icd = Icd.new
-      icd.code = row[:code]
-      icd.description = row[:description]
-      icd.save
+    if(params[:type] == 'new')
+      fields = [
+        { name: 'code', position: 0..7 },
+        { name: 'description', position: 9..-1 }
+      ]   
+      FixedWidthFileParser.parse(full_filename_with_path.to_s, fields, force_utf8_encoding: false) do |row| 
+        puts "ICD Code: \"#{row[:code]}\" & Description: \"#{row[:description]}\""
+        icd = Icd.new
+        icd.code = row[:code]
+        icd.description = row[:description]
+        icd.save
+      end
+    else
+      fields = [
+        { name: 'method', position: 0..12 },
+        { name: 'code', position: 14..20 },
+        { name: 'description', position: 21..-1 }
+      ]   
+      FixedWidthFileParser.parse(full_filename_with_path.to_s, fields, force_utf8_encoding: false) do |row| 
+        puts "ICD Code: \"#{row[:code]}\" & Description: \"#{row[:description]}\""
+
+        if row[:method].downcase.include?("add:")
+          icd = Icd.new
+          icd.code = row[:code]
+          icd.description = row[:description]
+          icd.save
+        elsif row[:method].downcase.include?("delete:")
+          #TODO remove the matching code from db
+        elsif row[:method].downcase.include?("revise from:")
+          #TODO read next line to collect data of revise to
+        end
+      end
     end
 
     flash[:notice] = "ICD File uploaded sucessfully"

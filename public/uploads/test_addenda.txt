@@ -1,0 +1,22 @@
+Add:         A7982   Anaplasmosis [A. phagocytophilum]
+Add:         C563    Malignant neoplasm of bilateral ovaries
+Add:         C7963   Secondary malignant neoplasm of bilateral ovaries
+Add:         C847A   Anaplastic large cell lymphoma, ALK-negative, breast
+Delete:      D552    Anemia due to disorders of glycolytic enzymes
+Add:         D5521   Anemia due to pyruvate kinase deficiency
+Add:         D5529   Anemia due to other disorders of glycolytic enzymes
+Add:         D75838  Other thrombocytosis
+Add:         D75839  Thrombocytosis, unspecified
+Add:         D8944   Hereditary alpha tryptasemia
+Add:         E75244  Niemann-Pick disease type A/B
+Add:         F32A    Depression, unspecified
+Delete:      F78     Other intellectual disabilities
+Add:         F78A1   SYNGAP1-related intellectual disability
+Add:         F78A9   Other genetic related intellectual disability
+Add:         G0482   Acute flaccid myelitis
+Add:         G4486   Cervicogenic headache
+Revise from: G7120   Congenital myopathy, unspecifed
+Revise to:   G7120   Congenital myopathy, unspecified
+Delete:      G92     Toxic encephalopathy
+Add:         G9200   Immune effector cell-associated neurotoxicity syndrome, grade unspecified
+Add:         G9201   Immune effector cell-associated neurotoxicity syndrome, grade 1

@@ -2,6 +2,10 @@
 
 <%= form_with url: "/process_file", multipart: true do |form| %>
   <%= form.file_field :filename %>
+  <%= form.radio_button :type, "new" %>
+  <%= form.label :type_new, "New File for Clean Upload" %>
+  <%= form.radio_button :type, "update" %>
+  <%= form.label :type_update, "Addendum File for Update" %>
   <%= form.submit "Upload" %>
 <% end %>
 
