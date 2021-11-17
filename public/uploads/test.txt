@@ -1,0 +1,4 @@
+A0103	Typhoid pneumonia
+A0104	Typhoid arthritis
+A0105	Typhoid osteomyelitis
+A0109	Typhoid fever with other complications

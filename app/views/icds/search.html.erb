@@ -1,9 +1,9 @@
 <h1>ICD Code Search</h1>
 
 <%= form_with url: "/search", method: :get do |form| %>
-  <%= form.label :item, "Type keywords to search an appropriate ICD Code" %><br>
-  <%= form.text_field :item %>
+  <%= form.label :query, "Type keywords to search an appropriate ICD Code" %><br>
+  <%= form.text_field :query %>
   <p> <%= form.submit "Search Database" %></p>
 <% end %>
 
-<p><%= link_to 'Return to Article Listing', icds_path %></p>
+<p><%= link_to 'Return to ICD Listing', icds_path %></p>

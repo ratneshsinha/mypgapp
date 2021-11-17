@@ -40,20 +40,33 @@ class IcdsController < ApplicationController
   end
 
   def upload
-    # fields = [
-    #   { code: 'code', position: 0..7 },
-    #   { description: 'description', position: 9..-1 }
-    # ]   
-    # FixedWidthFileParser.parse(params[:file], fields, force_utf8_encoding: false) do |row| 
-      # puts row
-    # end
-    # uploaded_file = params[:file]
-    # render html: 
-    # if uploaded_file != nil
-    #   File.open(Rails.root.join('public', 'uploads', uploaded_file), 'wb') do |f|
-    #       f.write(uploaded_file.read)
-    #   end
-    # end
+  end
+
+  def process_file
+    uploaded_file = params[:filename]
+    full_filename_with_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
+    if uploaded_file != nil
+      # render html: full_filename_with_path
+      File.open(full_filename_with_path, 'wb') do |f|
+        f.write(uploaded_file.read)
+      end
+    end
+
+    fields = [
+      { name: 'code', position: 0..7 },
+      { name: 'description', position: 9..-1 }
+    ]   
+    FixedWidthFileParser.parse(full_filename_with_path.to_s, fields, force_utf8_encoding: false) do |row| 
+      puts "ICD Code: \"#{row[:code]}\" & Description: \"#{row[:description]}\""
+      icd = Icd.new
+      icd.code = row[:code]
+      icd.description = row[:description]
+      icd.save
+    end
+
+    flash[:notice] = "ICD File uploaded sucessfully"
+    redirect_to icds_path
+
   end
 
   def search

@@ -1,8 +1,7 @@
 <h1>Upload ICD File</h1>
 
-<%= form_with url: "/upload", method: :get do |form| %>
-  <%= form.label :file, "Choose File to Upload:" %>
-  <%= form.file_field :file %>
+<%= form_with url: "/process_file", multipart: true do |form| %>
+  <%= form.file_field :filename %>
   <%= form.submit "Upload" %>
 <% end %>
 

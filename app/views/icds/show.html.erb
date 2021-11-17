@@ -2,6 +2,8 @@
 <p><strong>Code: <%= @icd.code %></strong></p>
 <p><strong>Description: <%= @icd.description %></strong></p>
 
-<%= link_to 'Edit', edit_icd_path(@icd) %> |
-<%= link_to 'Delete', icd_path(@icd), method: :delete, data: { confirm: "Are you sure?"} %> |
-<%= link_to 'Return to Article Listing', icds_path %>
+<p>
+  <%= link_to 'Edit', edit_icd_path(@icd) %> |
+  <%= link_to 'Delete', icd_path(@icd), method: :delete, data: { confirm: "Are you sure?"} %> |
+  <%= link_to 'Return to ICD Listing', icds_path %>
+</p>
