@@ -1,12 +1,14 @@
-<h1>Upload ICD File</h1>
+<div class="container">
+  <h1>Upload an ICD File</h1>
 
-<%= form_with url: "/process_file", multipart: true do |form| %>
-  <%= form.file_field :filename %>
-  <%= form.radio_button :type, "new" %>
-  <%= form.label :type_new, "New File for Clean Upload" %>
-  <%= form.radio_button :type, "update" %>
-  <%= form.label :type_update, "Addendum File for Update" %>
-  <%= form.submit "Upload" %>
-<% end %>
+  <%= form_with url: "/process_file", multipart: true do |form| %>
+    <%= form.file_field :filename %>
+    <%= form.radio_button :type, "new" %>
+    <%= form.label :type_new, "New File for Clean Upload" %>
+    <%= form.radio_button :type, "update" %>
+    <%= form.label :type_update, "Addendum File for Update" %>
+    <%= form.submit "Upload" %>
+  <% end %>
 
-<p><%= link_to 'Return to Article Listing', icds_path %></p>
+  <p><%= link_to 'Return to Article Listing', icds_path %></p>
+</div>

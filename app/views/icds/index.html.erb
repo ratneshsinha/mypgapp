@@ -1,6 +1,7 @@
-<h1>ICD Database</h1>
+<div class="container">
+<h1>ICD Listing</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Code</th>
@@ -13,10 +14,12 @@
     <tr>
       <td><%= icd.code %></td>
       <td><%= icd.description %></td>
-      <td><%= link_to 'Show', icd_path(icd) %> </td>
-      <td><%= link_to 'Edit', edit_icd_path(icd) %> </td>
-      <td><%= link_to "Delete", icd_path(icd), method: :delete, data: { confirm: "Are you sure?"} %> </td>
-    </tr>
+      <td><a href=<%= icd_path(icd) %> class="btn btn-outline-success">View</a></td>
+      <td><a href=<%= edit_icd_path(icd) %> class="btn btn-outline-info">Edit</a></td>
+      <td><%= link_to "Delete", icd_path(icd), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %></td>
+      <td><small>Created <%= time_ago_in_words(icd.created_at) %> ago </small></td>
+      <td><small>Modifed <%= time_ago_in_words(icd.updated_at) %> ago </small></td>
+     </tr>
     <% end %>
   </tbody>
 </table>
@@ -26,3 +29,11 @@
   <%= link_to "Upload from file", upload_path %> | 
   <%= link_to "Search", search_path %>
 </p>
+
+</div>
+
+<footer id="sticky-footer" class="py-4 bg-dark text-white">
+  <div class="container text-center">
+    <small>Copyright &copy; <%= link_to "My Company", "http://www.google.com", class: "text-white" %></small>
+  </div>
+</footer>

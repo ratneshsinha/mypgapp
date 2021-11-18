@@ -1,28 +1,23 @@
-<h1>Create a New ICD Record</h1>
+<div class="container">
+  <h1>Create a New ICD Record</h1>
 
-<% if @icd && @icd.errors.any? %>
-  <h2>The following errors prevented the ICD record to be Saved</h2>
-  <ul>
-  <% @icd.errors.full_messages.each do |msg| %>
-    <li> <%= msg %> </li>
+  <%= render 'shared/errors' %>
+
+  <%= form_with scope: :icd, url: icds_path, local: true do |f| %>
+    <p>
+      <%= f.label :code %> <br>
+      <%= f.text_field :code %>
+    </p>
+
+    <p>
+      <%= f.label :description %> <br>
+      <%= f.text_field :description %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
   <% end %>
-  </ul>
-<% end %>
 
-<%= form_with scope: :icd, url: icds_path, local: true do |f| %>
-  <p>
-    <%= f.label :code %> <br>
-    <%= f.text_field :code %>
-  </p>
-
-  <p>
-    <%= f.label :description %> <br>
-    <%= f.text_field :description %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<%= link_to 'Return to ICD Listing', icds_path %>
+  <%= link_to 'Return to ICD Listing', icds_path %>
+</div>
